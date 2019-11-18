@@ -11,8 +11,6 @@ function check_products($link) {
     FROM `products`';
   $result = mysqli_query($link, $sql);
   if (!mysqli_num_rows($result)) { $products = []; }
-  else {
-    while ($row = mysqli_fetch_assoc($result)) { $products[] = $row; }
-  }
+  else { $products = mysqli_fetch_all($result, MYSQLI_ASSOC); }
   return $products;
 }
