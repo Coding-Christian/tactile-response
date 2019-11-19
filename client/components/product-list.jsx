@@ -31,7 +31,7 @@ class ProductList extends React.Component {
         />
       );
     }
-    return (<div className='row card-deck'>{products}</div>);
+    return (<div className='row'>{products}</div>);
   }
 }
 
