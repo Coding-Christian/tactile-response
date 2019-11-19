@@ -18,16 +18,19 @@ class ProductList extends React.Component {
   }
 
   render() {
-    const products = this.state.products.map(product =>
-      <ProductListItem
-        key={product.id}
-        name={product.name}
-        image={product.image}
-        price={product.price}
-        shortDescription={product.shortDescription}
-        longDescription={product.longDescription}
-      />
-    );
+    let products = [];
+    if (this.state.products.length !== 0) {
+      products = this.state.products.map(product =>
+        <ProductListItem
+          key={product.id}
+          name={product.name}
+          image={product.image}
+          price={product.price}
+          shortDescription={product.shortDescription}
+          longDescription={product.longDescription}
+        />
+      );
+    }
     return (<div className='row'>{products}</div>);
   }
 }
