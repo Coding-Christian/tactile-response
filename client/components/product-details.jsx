@@ -17,7 +17,25 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    return null;
+    const product = this.state.product;
+    if (product) {
+      return (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className='modal-title'>{product.name}</h1>
+              <button type='button' data-dismiss='modal'>Back to Catalog</button>
+            </div>
+            <div className="modal-body">
+              <img src={product.image} alt={product.name}/>
+              <h3>{product.price}</h3>
+              <h6>{product.shortDescription}</h6>
+              <p>{product.longDescription}</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
