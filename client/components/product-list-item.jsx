@@ -1,11 +1,12 @@
 import React from 'react';
 
 function ProductListItem(props) {
+  const setView = () => props.setView('details', { productId: props.id });
   const imgStyle = { 'max-height': '200px', 'object-fit': 'contain' };
   const price = (props.price / 100).toFixed(2);
   return (
     <div className='col-12 col-md-4 my-3 d-flex align-items-stretch'>
-      <div className='card'>
+      <div onClick={setView} className='card'>
         <img src={props.image} alt={props.name} style={imgStyle} className='card-img-top'/>
         <div className='card-body d-flex flex-column justify-content-around'>
           <h4 className='card-title p-2'>{props.name}</h4>
