@@ -28,7 +28,7 @@ class ProductList extends React.Component {
         longDescription={product.longDescription}
       />
     );
-    return (<div className="row">{products}</div>);
+    return (<div className='row'>{products}</div>);
   }
 }
 
