@@ -20,7 +20,7 @@ function check_all_products($link) {
 }
 
 function check_product_details($link, $productId) {
-  $sql = "SELECT `productId`, `name`, `price`, `image`, `shortDescription`
+  $sql = "SELECT `productId`, `name`, `price`, `image`, `shortDescription`, `longDescription`
   FROM `products`
   WHERE `productId` = $productId";
   $result = mysqli_query($link, $sql);
