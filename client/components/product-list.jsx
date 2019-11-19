@@ -7,6 +7,16 @@ class ProductList extends React.Component {
     this.state = { products: [] };
   }
 
+  getProducts() {
+    fetch('/api/products')
+      .then(response => response.json())
+      .then(products => this.setState({ products }));
+  }
+
+  componentDidMount() {
+    this.getProducts();
+  }
+
   render() {
     const products = this.state.products.map(product =>
       <ProductListItem
