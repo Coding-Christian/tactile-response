@@ -4,7 +4,7 @@ function ProductListItem(props) {
   const imgStyle = { 'max-height': '200px', 'object-fit': 'contain' };
   const price = (props.price / 100).toFixed(2);
   return (
-    <div className='col-12 col-md-4 d-flex align-items-stretch my-3'>
+    <div className='col-12 col-md-4 my-3'>
       <div className='card'>
         <img src={props.image} alt={props.name} style={imgStyle} className='card-img-top'/>
         <div className='card-body d-flex flex-column justify-content-around'>
