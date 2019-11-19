@@ -6,7 +6,7 @@ if ($request['method'] === 'GET') {
     $productId = intval($request['query']['productId']);
     if ($productId <= 0) { throw new ApiError('Invalid product ID.', 400); }
     $response['body'] = check_product_details($link, $productId);
-  } else { $response['body'] = check_products($link); }
+  } else { $response['body'] = check_all_products($link); }
   send($response);
 }
 
