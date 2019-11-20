@@ -9,7 +9,7 @@ if ($request['method'] === 'GET') {
 } else if ($request['method'] === 'POST') {
   $productId = intval($request['body']['productId']);
   if ($productId <= 0) { throw new ApiError('Valid product ID required', 400); }
-  // $_SESSION['cart_id'] = create_cart($link);
+  if (!isset($_SESSION['cart_id'])) { $_SESSION['cart_id'] = create_cart($link); }
   $price = check_product_price($link, $productId);
   $newCartItemId = add_to_cart($link, $productId, $price);
   $response['body'] = check_product_details($link, $newCartItemId);
