@@ -2,7 +2,7 @@
 
 if ($request['method'] === 'GET') {
   $link = get_db_link();
-  if (array_key_exists('productId', $request['query'])) {
+  if (isset($request['query']['productId'])) {
     $productId = intval($request['query']['productId']);
     if ($productId <= 0) { throw new ApiError('Invalid product ID.', 400); }
     $response['body'] = check_product_details($link, $productId);
