@@ -34,7 +34,7 @@ class App extends React.Component {
     } else { viewElem = (<ProductDetails params={this.state.view.params} setView={this.setView}/>); }
     return (
       <div className='app'>
-        <Header title='Wicked Sales'/>
+        <Header cartItemCount={this.state.cart.length} title='Wicked Sales'/>
         <div className='container'>{viewElem}</div>
       </div>
     );
