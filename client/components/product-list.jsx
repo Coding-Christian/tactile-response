@@ -5,6 +5,7 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { products: [] };
+    this.setView = props.setView;
   }
 
   getProducts() {
@@ -23,11 +24,12 @@ class ProductList extends React.Component {
       products = this.state.products.map(product =>
         <ProductListItem
           key={product.id}
+          productId={product.productId}
           name={product.name}
           image={product.image}
           price={product.price}
           shortDescription={product.shortDescription}
-          longDescription={product.longDescription}
+          setView={this.setView}
         />
       );
     }
