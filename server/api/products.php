@@ -12,7 +12,7 @@ if ($request['method'] === 'GET') {
 
 function check_all_products($link) {
   $sql = 'SELECT `productId`, `name`, `price`, `image`, `shortDescription`
-    FROM `products`';
+    FROM `products`;';
   $result = mysqli_query($link, $sql);
   if (!mysqli_num_rows($result)) { $products = []; }
   else { $products = mysqli_fetch_all($result, MYSQLI_ASSOC); }
@@ -21,8 +21,8 @@ function check_all_products($link) {
 
 function check_product_details($link, $productId) {
   $sql = "SELECT `productId`, `name`, `price`, `image`, `shortDescription`, `longDescription`
-  FROM `products`
-  WHERE `productId` = $productId";
+    FROM `products`
+    WHERE `productId` = $productId;";
   $result = mysqli_query($link, $sql);
   if (!mysqli_num_rows($result)) { throw new ApiError('Page not found.', 404); }
   else { $products = mysqli_fetch_all($result, MYSQLI_ASSOC); }
