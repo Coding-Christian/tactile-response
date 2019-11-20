@@ -6,12 +6,25 @@ import ProductDetails from './product-details';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { view: { name: 'catalog', params: {} } };
+    this.state = {
+      view: { name: 'catalog', params: {} },
+      cart: []
+    };
     this.setView = this.setView.bind(this);
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(response => response.json())
+      .then(cart => this.setState({ cart }));
   }
 
   setView(name, params) {
     this.setState({ view: { name, params } });
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   render() {
