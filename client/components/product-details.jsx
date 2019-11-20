@@ -6,6 +6,7 @@ class ProductDetails extends React.Component {
     this.state = { product: null };
     this.params = props.params;
     this.setView = props.setView;
+    this.addToCart = props.addToCart;
   }
 
   getProductDetails(productId) {
@@ -22,6 +23,7 @@ class ProductDetails extends React.Component {
     const product = this.state.product;
     if (product) {
       const setView = () => { this.setView('catalog', {}); };
+      const addToCart = () => { this.addToCart(this.params.productId); };
       const imgStyle = { 'max-height': '250px', 'object-fit': 'contain' };
       const price = (product.price / 100).toFixed(2);
       return (
@@ -41,6 +43,7 @@ class ProductDetails extends React.Component {
                     <h2 className='modal-title'>{product.name}</h2>
                     <h3 className='text-muted'>${price}</h3>
                     <h6>{product.shortDescription}</h6>
+                    <button type='button' onClick={addToCart} className='btn btn-dark'>Add to Cart</button>
                   </div>
                 </div>
                 <p className='mt-4'>{product.longDescription}</p>
