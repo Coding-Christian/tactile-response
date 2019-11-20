@@ -25,6 +25,6 @@ function check_product_details($link, $productId) {
     WHERE `productId` = $productId;";
   $result = mysqli_query($link, $sql);
   if (!mysqli_num_rows($result)) { throw new ApiError('Page not found.', 404); }
-  else { $products = mysqli_fetch_all($result, MYSQLI_ASSOC); }
+  else { $products = mysqli_fetch_assoc($result); }
   return $products;
 }

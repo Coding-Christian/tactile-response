@@ -9,7 +9,7 @@ if ($request['method'] === 'GET') {
 } else if ($request['method'] === 'POST') {
   $productId = intval($request['body']['productId']);
   if ($productId <= 0) { throw new ApiError('Valid product ID required', 400); }
-  $_SESSION['cart_id'] = create_cart($link);
+  // $_SESSION['cart_id'] = create_cart($link);
   $price = check_product_price($link, $productId);
   $newCartItemId = add_to_cart($link, $productId, $price);
   $response['body'] = check_product_details($link, $newCartItemId);
@@ -35,8 +35,8 @@ function check_product_price($link, $productId) {
   $sql = "SELECT `price` FROM `products` WHERE `productId` = $productId;";
   $result = mysqli_query($link, $sql);
   if (!mysqli_num_rows($result)) { throw new ApiError('Page not found.', 404); }
-  else { $price = mysqli_fetch_all($result, MYSQLI_ASSOC); }
-  return $price;
+  else { $row = mysqli_fetch_assoc($result); }
+  return $row['price'];
 }
 
 function add_to_cart($link, $productId, $price) {
@@ -55,6 +55,6 @@ function check_product_details($link, $newCartItemId) {
       ON `cartItems`.`productId` = `products`.`productId`
     WHERE `cartItemId` = $newCartItemId;";
   $result = mysqli_query($link, $sql);
-  $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  $product = mysqli_fetch_assoc($result);
   return $product;
 }
