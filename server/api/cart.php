@@ -25,7 +25,11 @@ function create_cart($link) {
 
 function get_cart_products($link) {
   $cartId = $_SESSION['cart_id'];
-  $sql = "SELECT * FROM `cartItems` WHERE `cartId` = $cartId;";
+  $sql = "SELECT *
+    FROM `cartItems`
+    JOIN `products`
+      ON `cartItems`.`productId` = `products`.`productId`
+    WHERE `cartId` = $cartId;";
   $result = mysqli_query($link, $sql);
   $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
   return $products;

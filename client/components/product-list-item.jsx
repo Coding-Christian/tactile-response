@@ -6,7 +6,7 @@ function ProductListItem(props) {
   const price = (props.price / 100).toFixed(2);
   return (
     <div className='col-12 col-sm-6 col-md-4 my-3 d-flex align-items-stretch'>
-      <div onClick={setView} className='card'>
+      <div onClick={setView} style={{ cursor: 'pointer' }} className='card'>
         <img src={props.image} alt={props.name} style={imgStyle} className='card-img-top'/>
         <div className='card-body d-flex flex-column justify-content-around'>
           <h4 className='card-title p-2'>{props.name}</h4>

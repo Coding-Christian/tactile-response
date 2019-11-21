@@ -2,6 +2,7 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
+  const setView = () => { props.setView('catalog', {}); };
   let productElems;
   if (!props.products.length) {
     productElems = (<h4>Your Cart is Empty.</h4>);
@@ -11,13 +12,13 @@ function CartSummary(props) {
     );
   }
   return (
-    <div className='card'>
+    <div className='card my-4'>
       <div className='card-body d-flex flex-column justify-content-around'>
-        <button type='button' className='btn btn-dark'>
+        <div style={{ cursor: 'pointer' }} onClick={setView}>
           <i className="fas fa-chevron-left mr-2"/>
-          Back to Catalog
-        </button>
-        <h2>Your Cart</h2>
+          <h6 className='d-inline'>Back to Catalog</h6>
+        </div>
+        <h2 className="border-bottom mb-2">Your Cart</h2>
         {productElems}
       </div>
     </div>
