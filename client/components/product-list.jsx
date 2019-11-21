@@ -23,7 +23,7 @@ class ProductList extends React.Component {
     if (this.state.products.length !== 0) {
       products = this.state.products.map(product =>
         <ProductListItem
-          key={product.id}
+          key={product.productId}
           productId={product.productId}
           name={product.name}
           image={product.image}

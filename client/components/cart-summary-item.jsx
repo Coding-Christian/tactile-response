@@ -1,7 +1,7 @@
 import React from 'react';
 
 function CartSummaryItem(props) {
-  const imgStyle = { 'max-height': '150px', 'object-fit': 'contain' };
+  const imgStyle = { maxHeight: '150px', objectFit: 'contain' };
   const price = (props.product.price / 100).toFixed(2);
   return (
     <div className="row mt-2">

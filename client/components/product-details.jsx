@@ -24,7 +24,7 @@ class ProductDetails extends React.Component {
     if (product) {
       const setView = () => { this.setView('catalog', {}); };
       const addToCart = () => { this.addToCart(this.params.productId); };
-      const imgStyle = { 'max-height': '250px', 'object-fit': 'contain' };
+      const imgStyle = { maxHeight: '250px', objectFit: 'contain' };
       const price = (product.price / 100).toFixed(2);
       return (
         <div className="modal d-block position-relative mt-4">
