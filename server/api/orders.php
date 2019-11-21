@@ -20,8 +20,8 @@ if ($request['method'] === 'POST') {
     'shippingAddress' => $address
   ];
   unset($_SESSION['cart_id']);
+  send($response);
 }
-send($response);
 
 function prep_query($link) {
   $sql = "INSERT INTO `orders` (`orderId`,`cartId`,`name`,`creditCard`,`ShippingAddress`,`createdAt`)
