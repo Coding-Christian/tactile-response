@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
                   <div className="col-7">
                     <h2 className='modal-title'>{product.name}</h2>
                     <h3 className='text-muted'>${price}</h3>
-                    <h6>{product.shortDescription}</h6>
+                    <h6 className='my-4'>{product.shortDescription}</h6>
                     <button type='button' onClick={addToCart} className='btn btn-dark'>Add to Cart</button>
                   </div>
                 </div>

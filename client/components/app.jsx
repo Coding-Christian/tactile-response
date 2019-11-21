@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class App extends React.Component {
     let viewElem;
     if (this.state.view.name === 'catalog') {
       viewElem = (<ProductList setView={this.setView}/>);
-    } else {
+    } else if (this.state.view.name === 'details') {
       viewElem = (
         <ProductDetails
           params={this.state.view.params}
@@ -49,10 +50,16 @@ class App extends React.Component {
           addToCart={this.addToCart}
         />
       );
+    } else {
+      viewElem = (<CartSummary setView={this.setView} products={this.state.cart}/>);
     }
     return (
       <div className='app'>
-        <Header cartItemCount={this.state.cart.length} title='Wicked Sales'/>
+        <Header
+          cartItemCount={this.state.cart.length}
+          setView={this.setView}
+          title='Wicked Sales'
+        />
         <div className='container'>{viewElem}</div>
       </div>
     );
