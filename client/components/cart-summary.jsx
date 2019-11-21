@@ -3,12 +3,13 @@ import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
   const setView = () => { props.setView('catalog', {}); };
+  const totalPrice = (props.totalPrice / 100).toFixed(2);
   let productElems;
   if (!props.products.length) {
     productElems = (<h4>Your Cart is Empty.</h4>);
   } else {
     productElems = props.products.map(product =>
-      <CartSummaryItem key={product.name} product={product}/>
+      <CartSummaryItem key={product.cartItemId} product={product}/>
     );
   }
   return (
@@ -18,8 +19,9 @@ function CartSummary(props) {
           <i className="fas fa-chevron-left mr-2"/>
           <h6 className='d-inline'>Back to Catalog</h6>
         </div>
-        <h2 className="border-bottom mb-2">Your Cart</h2>
+        <h2 className="border-bottom my-2 pb-2">Your Cart</h2>
         {productElems}
+        <h2 className="border-top mt-2 pt-2">Total: ${totalPrice}</h2>
       </div>
     </div>
   );

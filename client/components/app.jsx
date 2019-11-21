@@ -51,7 +51,15 @@ class App extends React.Component {
         />
       );
     } else {
-      viewElem = (<CartSummary setView={this.setView} products={this.state.cart}/>);
+      const prices = this.state.cart.map(product => product.price);
+      const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
+      viewElem = (
+        <CartSummary
+          setView={this.setView}
+          products={this.state.cart}
+          totalPrice={totalPrice}
+        />
+      );
     }
     return (
       <div className='app'>
