@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: { name: 'catalog', params: {} },
-      cart: []
+      cart: [],
+      order: {}
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -28,6 +29,16 @@ class App extends React.Component {
     fetch('/api/cart')
       .then(response => response.json())
       .then(cart => this.setState({ cart }));
+  }
+
+  placeOrder(userInfo) {
+    const view = { name: 'catalog', params: {} };
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userInfo)
+    }).then(response => response.json())
+      .then(order => this.setState({ view, order }));
   }
 
   setView(name, params) {
