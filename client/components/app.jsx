@@ -15,6 +15,7 @@ class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   addToCart(productId) {
@@ -57,36 +58,15 @@ class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       viewElem = (<ProductList setView={this.setView}/>);
     } else if (this.state.view.name === 'details') {
-      viewElem = (
-        <ProductDetails
-          params={this.state.view.params}
-          setView={this.setView}
-          addToCart={this.addToCart}
-        />
-      );
+      viewElem = (<ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>);
     } else if (this.state.view.name === 'checkout') {
-      viewElem = (
-        <CheckoutForm
-          setView={this.setView}
-          totalPrice={totalPrice}
-        />
-      );
+      viewElem = (<CheckoutForm placeOrder={this.placeOrder} totalPrice={totalPrice}/>);
     } else {
-      viewElem = (
-        <CartSummary
-          setView={this.setView}
-          products={this.state.cart}
-          totalPrice={totalPrice}
-        />
-      );
+      viewElem = (<CartSummary setView={this.setView} products={this.state.cart} totalPrice={totalPrice}/>);
     }
     return (
       <div className='app'>
-        <Header
-          cartItemCount={this.state.cart.length}
-          setView={this.setView}
-          title='Wicked Sales'
-        />
+        <Header cartItemCount={this.state.cart.length} setView={this.setView} title='Wicked Sales' />
         <div className='container'>{viewElem}</div>
       </div>
     );
