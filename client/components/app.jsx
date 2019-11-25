@@ -3,6 +3,7 @@ import Header from './Header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -50,6 +51,8 @@ class App extends React.Component {
   }
 
   render() {
+    const prices = this.state.cart.map(product => product.price);
+    const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
     let viewElem;
     if (this.state.view.name === 'catalog') {
       viewElem = (<ProductList setView={this.setView}/>);
@@ -61,9 +64,14 @@ class App extends React.Component {
           addToCart={this.addToCart}
         />
       );
+    } else if (this.state.view.name === 'checkout') {
+      viewElem = (
+        <CheckoutForm
+          setView={this.setView}
+          totalPrice={totalPrice}
+        />
+      );
     } else {
-      const prices = this.state.cart.map(product => product.price);
-      const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
       viewElem = (
         <CartSummary
           setView={this.setView}
