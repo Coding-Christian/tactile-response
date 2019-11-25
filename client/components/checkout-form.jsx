@@ -6,10 +6,12 @@ class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      address: ''
+      shippingAddress: ''
     };
-    this.palceOrder = props.PlaceOrder;
+    this.placeOrder = props.placeOrder;
     this.totalPrice = props.totalPrice;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -18,15 +20,17 @@ class CheckoutForm extends React.Component {
     if (field === 'name') {
       this.setState({ name: value });
     } else if (field === 'address') {
-      this.setState({ address: value });
+      this.setState({ shippingAddress: value });
     } else {
       this.setState({ creditCard: value });
     }
   }
 
-  handleSubmit() {
-    const { name, creditCard, address } = this.state;
-    this.placeOrder(name, creditCard, address);
+  handleSubmit(event) {
+    event.preventDefault();
+    const userInfo = {};
+    Object.assign(userInfo, this.state);
+    this.placeOrder(userInfo);
   }
 
   render() {
@@ -37,15 +41,15 @@ class CheckoutForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
-              <input type="text" id='name'/>
+              <input type="text" onChange={this.handleChange} id='name'/>
             </div>
             <div className="form-group">
               <label htmlFor="creditCard">Credit Card</label>
-              <input type="text" id='creditCard'/>
+              <input type="text" onChange={this.handleChange} id='creditCard'/>
             </div>
             <div className="form-group">
-              <label htmlFor="address">Name</label>
-              <input type="textarea" id='address'/>
+              <label htmlFor="address">Address</label>
+              <textarea id='address' onChange={this.handleChange}/>
             </div>
             <button type="submit">Place Order</button>
           </form>

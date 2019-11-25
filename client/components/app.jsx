@@ -40,7 +40,7 @@ class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userInfo)
     }).then(response => response.json())
-      .then(order => this.setState({ view, order }));
+      .then(order => this.setState({ view, cart: [], order }));
   }
 
   setView(name, params) {
@@ -52,16 +52,18 @@ class App extends React.Component {
   }
 
   render() {
-    const prices = this.state.cart.map(product => product.price);
-    const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
     let viewElem;
     if (this.state.view.name === 'catalog') {
       viewElem = (<ProductList setView={this.setView}/>);
     } else if (this.state.view.name === 'details') {
       viewElem = (<ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>);
     } else if (this.state.view.name === 'checkout') {
+      const prices = this.state.cart.map(product => product.price);
+      const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
       viewElem = (<CheckoutForm placeOrder={this.placeOrder} totalPrice={totalPrice}/>);
     } else {
+      const prices = this.state.cart.map(product => product.price);
+      const totalPrice = prices.reduce((prod1, prod2) => prod1 + prod2);
       viewElem = (<CartSummary setView={this.setView} products={this.state.cart} totalPrice={totalPrice}/>);
     }
     return (
