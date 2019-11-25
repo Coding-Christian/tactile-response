@@ -12,6 +12,18 @@ class CheckoutForm extends React.Component {
     this.totalPrice = props.totalPrice;
   }
 
+  handleChange(event) {
+    const field = event.target.id;
+    const value = event.target.value;
+    if (field === 'name') {
+      this.setState({ name: value });
+    } else if (field === 'address') {
+      this.setState({ address: value });
+    } else {
+      this.setState({ creditCard: value });
+    }
+  }
+
   render() {
     return (
       <div className='card my-4'>
@@ -23,16 +35,16 @@ class CheckoutForm extends React.Component {
           <h2 className="border-bottom my-2 pb-2">Your Total: ${this.totalPrice}</h2>
           <form>
             <div className="form-group">
-              <label htmlFor="customerName">Name</label>
-              <input type="text" id='customerName'/>
+              <label htmlFor="name">Name</label>
+              <input type="text" id='name'/>
             </div>
             <div className="form-group">
-              <label htmlFor="cardNumber">Credit Card</label>
-              <input type="text" id='customerName'/>
+              <label htmlFor="creditCard">Credit Card</label>
+              <input type="text" id='creditCard'/>
             </div>
             <div className="form-group">
-              <label htmlFor="customerAddress">Name</label>
-              <input type="textarea" id='customerAddress'/>
+              <label htmlFor="address">Name</label>
+              <input type="textarea" id='address'/>
             </div>
             <button type="submit">Place Order</button>
           </form>
