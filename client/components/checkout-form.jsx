@@ -9,7 +9,7 @@ class CheckoutForm extends React.Component {
       shippingAddress: ''
     };
     this.placeOrder = props.placeOrder;
-    this.totalPrice = props.totalPrice;
+    this.totalPrice = (props.totalPrice / 100).toFixed(2);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -35,23 +35,25 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <div className='card my-4'>
+      <div className='card my-4 col-6 offset-3'>
         <div className='card-body d-flex flex-column justify-content-around'>
           <h2 className="border-bottom my-2 pb-2">Your Total: ${this.totalPrice}</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" onChange={this.handleChange} id='name'/>
+              <label htmlFor="name">Name:</label>
+              <input type="text" onChange={this.handleChange} id='name' className='form-control'/>
             </div>
             <div className="form-group">
-              <label htmlFor="creditCard">Credit Card</label>
-              <input type="text" onChange={this.handleChange} id='creditCard'/>
+              <label htmlFor="creditCard">Credit Card:</label>
+              <input type="text" onChange={this.handleChange} id='creditCard' className='form-control'/>
             </div>
             <div className="form-group">
-              <label htmlFor="address">Address</label>
-              <textarea id='address' onChange={this.handleChange}/>
+              <label htmlFor="address">Address:</label>
+              <textarea id='address' onChange={this.handleChange} className='form-control'/>
             </div>
-            <button type="submit">Place Order</button>
+            <div className="d-flex justify-content-end">
+              <button type="submit" className='btn btn-dark'>Place Order</button>
+            </div>
           </form>
         </div>
       </div>

@@ -22,8 +22,10 @@ function CartSummary(props) {
         </div>
         <h2 className="border-bottom my-2 pb-2">Your Cart</h2>
         {productElems}
-        <h2 className="border-top mt-2 pt-2">Total: ${totalPrice}</h2>
-        <button type='button' onClick={setViewCheckout}>To Checkout</button>
+        <div className="d-flex justify-content-between border-top mt-2 pt-2">
+          <h2 className="d-inline-block">Total: ${totalPrice}</h2>
+          <button type='button' onClick={setViewCheckout} className='btn btn-dark'>To Checkout</button>
+        </div>
       </div>
     </div>
   );
