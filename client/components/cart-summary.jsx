@@ -2,7 +2,8 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
-  const setView = () => { props.setView('catalog', {}); };
+  const setViewCatalog = () => { props.setView('catalog', {}); };
+  const setViewCheckout = () => { props.setView('checkout', {}); };
   const totalPrice = (props.totalPrice / 100).toFixed(2);
   let productElems;
   if (!props.products.length) {
@@ -15,13 +16,16 @@ function CartSummary(props) {
   return (
     <div className='card my-4'>
       <div className='card-body d-flex flex-column justify-content-around'>
-        <div style={{ cursor: 'pointer' }} onClick={setView}>
+        <div style={{ cursor: 'pointer' }} onClick={setViewCatalog}>
           <i className="fas fa-chevron-left mr-2"/>
           <h6 className='d-inline'>Back to Catalog</h6>
         </div>
         <h2 className="border-bottom my-2 pb-2">Your Cart</h2>
         {productElems}
-        <h2 className="border-top mt-2 pt-2">Total: ${totalPrice}</h2>
+        <div className="d-flex justify-content-between border-top mt-2 pt-2">
+          <h2 className="d-inline-block">Total: ${totalPrice}</h2>
+          <button type='button' onClick={setViewCheckout} className='btn btn-dark'>To Checkout</button>
+        </div>
       </div>
     </div>
   );
