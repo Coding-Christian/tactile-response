@@ -68,7 +68,7 @@ class App extends React.Component {
     }
     return (
       <div className='app'>
-        <Header cartItemCount={this.state.cart.length} setView={this.setView} title='Wicked Sales' />
+        <Header cartItemCount={this.state.cart.length} setView={this.setView} title='Tactile Response' />
         <div className='container'>{viewElem}</div>
       </div>
     );

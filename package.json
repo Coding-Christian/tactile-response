@@ -1,8 +1,8 @@
 {
-  "name": "wicked-sales",
+  "name": "tactile-response",
   "version": "1.0.0",
   "private": true,
-  "description": "A full stack LAMP & React shopping cart app.",
+  "description": "A React based digital storefront for gamers or programmers who want to up their keyboard game.",
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch",
@@ -99,13 +99,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Learning-Fuze/wicked-sales.git"
+    "url": "git+https://github.com/Coding-Christian/tactile-response.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Learning-Fuze/wicked-sales/issues"
+    "url": "https://github.com/Coding-Christian/tactile-response/issues"
   },
-  "homepage": "https://github.com/Learning-Fuze/wicked-sales#readme"
+  "homepage": "https://github.com/Coding-Christian/tactile-response#readme"
 }
